@@ -1,0 +1,2959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.11.9 on win32)" generated="2025-11-16T04:33:18.980413" rpa="false" schemaversion="5">
+<suite id="s1" name="CU Bank UI Tests" source="D:\University Work CU Master’s Degree\Year 1, Term 1\Software Testing and Quality Assurance\Work\CU_Bank-Robot_Framework\CU_Bank_UI_Tests.robot">
+<kw name="Open Browser To CU Bank" type="SETUP">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-11-16T04:33:19.487777" level="INFO" html="true">Directory '&lt;a href="file://D:\University Work CU Master’s Degree\Year 1, Term 1\Software Testing and Quality Assurance\Work\CU_Bank-Robot_Framework\screenshots"&gt;D:\University Work CU Master’s Degree\Year 1, Term 1\Software Testing and Quality Assurance\Work\CU_Bank-Robot_Framework\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-11-16T04:33:19.487777" elapsed="0.000000"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:19.487777" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:19.487777" elapsed="2.130634"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.619410" elapsed="0.044998"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>10s</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.664408" elapsed="0.003001"/>
+</kw>
+<doc>เปิด Browser และเตรียมโฟลเดอร์เก็บ Screenshot</doc>
+<status status="PASS" start="2025-11-16T04:33:19.487777" elapsed="2.179632"/>
+</kw>
+<test id="s1-t1" name="TC8-01 Withdraw More Than Balance" line="35">
+<kw name="Login As Valid User">
+<kw name="Go To Login Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:21.674409" level="INFO">Opening url 'http://localhost:3000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.673407" elapsed="0.120545"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.794953" elapsed="0.019547"/>
+</kw>
+<status status="PASS" start="2025-11-16T04:33:21.671410" elapsed="0.144088"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:21.815498" level="INFO">Typing text '1234567890' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${VALID_ACCOUNT_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.815498" elapsed="0.162538"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:21.979036" level="INFO">Typing text '1234' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:21.978036" elapsed="0.147886"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:22.126920" level="INFO">Clicking button 'css:button[cid="lc"]'.</msg>
+<arg>css:button[cid="lc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.125922" elapsed="0.138535"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Account ID:</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.265458" elapsed="0.420202"/>
+</kw>
+<doc>ใช้ accountId/password ที่ valid ในระบบ</doc>
+<status status="PASS" start="2025-11-16T04:33:21.670407" elapsed="1.015253"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.689663" elapsed="0.015526"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:22.813759" level="INFO">${text} = 2970</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.705189" elapsed="0.108570"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:22.814754" level="INFO">${value} = 2970</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.813759" elapsed="0.000995"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:22.814754" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:22.688665" elapsed="0.126089"/>
+</kw>
+<msg time="2025-11-16T04:33:22.814754" level="INFO">${value} = 2970</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.687661" elapsed="0.127093"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:22.814754" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:22.814754" level="INFO">${before} = 2970</msg>
+<var>${before}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:22.686662" elapsed="0.128092"/>
+</kw>
+<kw name="Deposit Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.816765" elapsed="0.012992"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.829757" elapsed="0.039014"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:22.868771" level="INFO">Typing text '100' into text field 'css:input[cid="d1"]'.</msg>
+<arg>css:input[cid="d1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.868771" elapsed="0.100141"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:22.969906" level="INFO">Clicking button 'css:button[cid="dc"]'.</msg>
+<arg>css:button[cid="dc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:22.968912" elapsed="0.139103"/>
+</kw>
+<arg>${DEPOSIT_AMOUNT}</arg>
+<doc>ฝากเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:22.816765" elapsed="0.291250"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:23.109011" level="INFO">${expected_after_deposit} = 3070</msg>
+<var>${expected_after_deposit}</var>
+<arg>${before} + ${DEPOSIT_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.109011" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.113011" elapsed="0.012003"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:23.149009" level="INFO">${text} = 2970</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.125014" elapsed="0.025001"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:23.150015" level="INFO">${value} = 2970</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.150015" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:23.150015" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:23.113011" elapsed="0.037997"/>
+</kw>
+<msg time="2025-11-16T04:33:23.151008" level="INFO">${value} = 2970</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.112016" elapsed="0.038992"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:23.151008" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:23.151008" level="INFO">${current} = 2970</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:23.112016" elapsed="0.038992"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:23.152008" level="FAIL">2970 != 3070</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:23.152008" elapsed="0.000000">2970 != 3070</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:23.111011" elapsed="0.040997">2970 != 3070</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.657369" elapsed="0.039020"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:23.723461" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.696389" elapsed="0.027072"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:23.724452" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.723461" elapsed="0.000991"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:23.724452" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:23.656376" elapsed="0.068076"/>
+</kw>
+<msg time="2025-11-16T04:33:23.724452" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.655372" elapsed="0.069080"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:23.724452" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:23.725452" level="INFO">${current} = 3070</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:23.654370" elapsed="0.071082"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.725452" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:23.653303" elapsed="0.072149"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.111011" elapsed="0.614441"/>
+</kw>
+<arg>${expected_after_deposit}</arg>
+<status status="PASS" start="2025-11-16T04:33:23.110013" elapsed="0.616438"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:24.226775" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:23.726451" elapsed="0.500324"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:24.378259" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-01-Deposit100valid.png"&gt;&lt;img src="screenshots/TC8-01-Deposit100valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-01-Deposit100valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.227796" elapsed="0.150463"/>
+</kw>
+<kw name="Withdraw Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.384257" elapsed="0.014011"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.398268" elapsed="0.044547"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:24.444810" level="INFO">Typing text '9999999999' into text field 'css:input[cid="w1"]'.</msg>
+<arg>css:input[cid="w1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.443809" elapsed="0.156557"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:24.601370" level="INFO">Clicking button 'css:button[cid="wc"]'.</msg>
+<arg>css:button[cid="wc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.600366" elapsed="0.146510"/>
+</kw>
+<arg>${WITHDRAW_GT_BALANCE}</arg>
+<doc>พยายามถอนเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:24.382251" elapsed="0.364625"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${INSUFFICIENT_BALANCE_MSG}</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.747871" elapsed="0.018002"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:label[cid="withdraw-error-mes"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.766868" elapsed="0.015999"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.784873" elapsed="0.010003"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:24.816409" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.794876" elapsed="0.021533"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:24.817411" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.817411" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:24.817411" elapsed="0.000994"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:24.784873" elapsed="0.033532"/>
+</kw>
+<msg time="2025-11-16T04:33:24.818405" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.783873" elapsed="0.034532"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:24.818405" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:24.819405" level="INFO">${after_withdraw} = 3070</msg>
+<var>${after_withdraw}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:24.783873" elapsed="0.035532"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${after_withdraw}</arg>
+<arg>${expected_after_deposit}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.820405" elapsed="0.001001"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:25.321677" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:24.821406" elapsed="0.500271"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:25.459054" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-01-Withdraw%E0%B8%A1%E0%B8%B2%E0%B8%81%E0%B8%81%E0%B8%A7%E0%B9%88%E0%B8%B2Balance.png"&gt;&lt;img src="screenshots/TC8-01-Withdraw%E0%B8%A1%E0%B8%B2%E0%B8%81%E0%B8%81%E0%B8%A7%E0%B9%88%E0%B8%B2Balance.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-01-Withdrawมากกว่าBalance.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.322702" elapsed="0.136352"/>
+</kw>
+<kw name="Transfer Amount">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Transfer</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.464035" elapsed="0.024005"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.488040" elapsed="0.047427"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:25.536462" level="INFO">Typing text '1234567891' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${target_account_id}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.535467" elapsed="0.180072"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.716540" elapsed="0.027008"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.743548" elapsed="0.107028"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:25.851573" level="INFO">Typing text '50' into text field 'css:input[cid="t2"]'.</msg>
+<arg>css:input[cid="t2"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:25.850576" elapsed="0.217593"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:26.069168" level="INFO">Clicking button 'css:button[cid="tc"]'.</msg>
+<arg>css:button[cid="tc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.068169" elapsed="0.232092"/>
+</kw>
+<arg>${TARGET_ACCOUNT_ID}</arg>
+<arg>${TRANSFER_AMOUNT}</arg>
+<doc>โอน ${amount} ไปยังบัญชีเป้าหมาย 1234567891</doc>
+<status status="PASS" start="2025-11-16T04:33:25.463034" elapsed="0.837227"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:26.302266" level="INFO">${expected_after_transfer} = 3020</msg>
+<var>${expected_after_transfer}</var>
+<arg>${expected_after_deposit} - ${TRANSFER_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.301264" elapsed="0.001002"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.310259" elapsed="0.017535"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:26.360806" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.328803" elapsed="0.032003"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:26.361818" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.360806" elapsed="0.001012"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:26.362809" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:26.309260" elapsed="0.053549"/>
+</kw>
+<msg time="2025-11-16T04:33:26.362809" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.308261" elapsed="0.054548"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:26.363797" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:26.363797" level="INFO">${current} = 3070</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:26.307262" elapsed="0.056535"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:26.364814" level="FAIL">3070 != 3020</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:26.363797" elapsed="0.001017">3070 != 3020</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:26.305265" elapsed="0.059549">3070 != 3020</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.866473" elapsed="0.018006"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:26.910498" level="INFO">${text} = 3020</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.884479" elapsed="0.026019"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:26.911496" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.911496" elapsed="0.000509"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:26.912005" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:26.866473" elapsed="0.045532"/>
+</kw>
+<msg time="2025-11-16T04:33:26.912005" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.865467" elapsed="0.046538"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:26.912005" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:26.913022" level="INFO">${current} = 3020</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:26.865467" elapsed="0.047555"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.914034" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:26.864958" elapsed="0.049076"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.304261" elapsed="0.609773"/>
+</kw>
+<arg>${expected_after_transfer}</arg>
+<status status="PASS" start="2025-11-16T04:33:26.303259" elapsed="0.611762"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:27.416529" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:26.915021" elapsed="0.501508"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:27.575611" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-01-Transfer50valid.png"&gt;&lt;img src="screenshots/TC8-01-Transfer50valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-01-Transfer50valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.417043" elapsed="0.158568"/>
+</kw>
+<kw name="Capture Screenshot For Test" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:27.579609" level="INFO">${status} = PASS</msg>
+<var>${status}</var>
+<arg>${TEST STATUS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.578607" elapsed="0.001002"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:27.580608" level="INFO">${name} = TC8-01 Withdraw More Than Balance</msg>
+<var>${name}</var>
+<arg>${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.579609" elapsed="0.000999"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:27.582609" level="INFO">Executing JavaScript:
+window.scrollTo(0,0);
+Without any arguments.</msg>
+<arg>window.scrollTo(0,0);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.580608" elapsed="0.013005"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:27.774432" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/PASS_TC8-01%20Withdraw%20More%20Than%20Balance-scroll.png"&gt;&lt;img src="screenshots/PASS_TC8-01%20Withdraw%20More%20Than%20Balance-scroll.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.595604" elapsed="0.178828"/>
+</kw>
+<arg>'${status}' == 'PASS' and '${CAPTURE_ON_PASS}' == 'True'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.594604" elapsed="0.179828"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.775428" elapsed="0.000000"/>
+</kw>
+<doc>จับ Screenshot ทุกครั้งที่จบเทสต์</doc>
+<status status="PASS" start="2025-11-16T04:33:27.576610" elapsed="0.198818"/>
+</kw>
+<doc>Scenario 8 / TC8-01:
+Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw 200 (มากกว่า Balance: เงินไม่พอ) แล้ว Transfer 50 valid</doc>
+<status status="PASS" start="2025-11-16T04:33:21.668405" elapsed="6.108016"/>
+</test>
+<test id="s1-t2" name="TC8-02 Withdraw Amount Zero" line="64">
+<kw name="Login As Valid User">
+<kw name="Go To Login Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:27.784429" level="INFO">Opening url 'http://localhost:3000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.783428" elapsed="0.091298"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.875738" elapsed="0.041239"/>
+</kw>
+<status status="PASS" start="2025-11-16T04:33:27.783428" elapsed="0.133549"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:27.917977" level="INFO">Typing text '1234567890' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${VALID_ACCOUNT_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:27.917977" elapsed="0.187539"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:28.106513" level="INFO">Typing text '1234' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.106513" elapsed="0.268590"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:28.377104" level="INFO">Clicking button 'css:button[cid="lc"]'.</msg>
+<arg>css:button[cid="lc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.375103" elapsed="0.122620"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Account ID:</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.497723" elapsed="0.301031"/>
+</kw>
+<doc>ใช้ accountId/password ที่ valid ในระบบ</doc>
+<status status="PASS" start="2025-11-16T04:33:27.782431" elapsed="1.017336"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.801765" elapsed="0.013209"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:28.896540" level="INFO">${text} = 3020</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.815979" elapsed="0.080561"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:28.896540" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.896540" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:28.896540" elapsed="0.000993"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:28.800767" elapsed="0.096766"/>
+</kw>
+<msg time="2025-11-16T04:33:28.897533" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.800767" elapsed="0.096766"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:28.897533" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:28.897533" level="INFO">${before} = 3020</msg>
+<var>${before}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:28.799767" elapsed="0.097766"/>
+</kw>
+<kw name="Deposit Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.901540" elapsed="0.011006"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.912546" elapsed="0.048426"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:28.962969" level="INFO">Typing text '100' into text field 'css:input[cid="d1"]'.</msg>
+<arg>css:input[cid="d1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:28.961961" elapsed="0.107599"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:29.070551" level="INFO">Clicking button 'css:button[cid="dc"]'.</msg>
+<arg>css:button[cid="dc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.069560" elapsed="0.128641"/>
+</kw>
+<arg>${DEPOSIT_AMOUNT}</arg>
+<doc>ฝากเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:28.900540" elapsed="0.300261"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:29.202827" level="INFO">${expected_after_deposit} = 3120</msg>
+<var>${expected_after_deposit}</var>
+<arg>${before} + ${DEPOSIT_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.208879" elapsed="0.012529"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:29.242409" level="INFO">${text} = 3020</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.221408" elapsed="0.021001"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:29.242409" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.242409" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:29.242409" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.039582"/>
+</kw>
+<msg time="2025-11-16T04:33:29.242409" level="INFO">${value} = 3020</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.039582"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:29.242409" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:29.242409" level="INFO">${current} = 3020</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.039582"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:29.247727" level="FAIL">3020 != 3120</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:29.242409" elapsed="0.005318">3020 != 3120</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:29.202827" elapsed="0.044900">3020 != 3120</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.751117" elapsed="0.013822"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:29.815125" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.764939" elapsed="0.050186"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:29.815125" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.815125" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:29.815125" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:29.751117" elapsed="0.064008"/>
+</kw>
+<msg time="2025-11-16T04:33:29.815125" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.751117" elapsed="0.064008"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:29.815125" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:29.815125" level="INFO">${current} = 3120</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:29.749103" elapsed="0.066022"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.815125" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:29.748094" elapsed="0.067031"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.612298"/>
+</kw>
+<arg>${expected_after_deposit}</arg>
+<status status="PASS" start="2025-11-16T04:33:29.202827" elapsed="0.612298"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:30.315427" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:29.815125" elapsed="0.500302"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:30.484718" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-02-Deposit100valid.png"&gt;&lt;img src="screenshots/TC8-02-Deposit100valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-02-Deposit100valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.315427" elapsed="0.169606"/>
+</kw>
+<kw name="Withdraw Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.490825" elapsed="0.032685"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.523510" elapsed="0.059721"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:30.583231" level="INFO">Typing text '0' into text field 'css:input[cid="w1"]'.</msg>
+<arg>css:input[cid="w1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.583231" elapsed="0.180373"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:30.764600" level="INFO">Clicking button 'css:button[cid="wc"]'.</msg>
+<arg>css:button[cid="wc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.764600" elapsed="0.125737"/>
+</kw>
+<arg>${WITHDRAW_ZERO}</arg>
+<doc>พยายามถอนเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:30.489636" elapsed="0.401701"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${POSITIVE_AMOUNT_ERROR_MSG}</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.891337" elapsed="0.017008"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:31.410500" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:30.909342" elapsed="0.501158"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.414019" elapsed="0.017178"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:31.460196" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.431197" elapsed="0.028999"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:31.461189" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.460196" elapsed="0.000993"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:31.462201" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:31.413031" elapsed="0.049170"/>
+</kw>
+<msg time="2025-11-16T04:33:31.462201" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.412024" elapsed="0.050177"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:31.463189" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:31.463189" level="INFO">${after_withdraw} = 3120</msg>
+<var>${after_withdraw}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:31.411015" elapsed="0.052174"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${after_withdraw}</arg>
+<arg>${expected_after_deposit}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.464189" elapsed="0.001000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:31.966287" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.466188" elapsed="0.500099"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:32.111887" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-02-Withdraw%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C.png"&gt;&lt;img src="screenshots/TC8-02-Withdraw%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-02-Withdrawศูนย์.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:31.967308" elapsed="0.144579"/>
+</kw>
+<kw name="Transfer Amount">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Transfer</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.114888" elapsed="0.016539"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.131427" elapsed="0.050997"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:32.183422" level="INFO">Typing text '1234567891' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${target_account_id}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.182424" elapsed="0.177843"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.360267" elapsed="0.026007"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.386274" elapsed="0.054544"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:32.441820" level="INFO">Typing text '50' into text field 'css:input[cid="t2"]'.</msg>
+<arg>css:input[cid="t2"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.441820" elapsed="0.114532"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:32.557348" level="INFO">Clicking button 'css:button[cid="tc"]'.</msg>
+<arg>css:button[cid="tc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.556352" elapsed="0.131111"/>
+</kw>
+<arg>${TARGET_ACCOUNT_ID}</arg>
+<arg>${TRANSFER_AMOUNT}</arg>
+<doc>โอน ${amount} ไปยังบัญชีเป้าหมาย 1234567891</doc>
+<status status="PASS" start="2025-11-16T04:33:32.113895" elapsed="0.573568"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:32.687463" level="INFO">${expected_after_transfer} = 3070</msg>
+<var>${expected_after_transfer}</var>
+<arg>${expected_after_deposit} - ${TRANSFER_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.687463" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.726304" elapsed="0.018136"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:32.779562" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.744440" elapsed="0.035122"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:32.780569" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.779562" elapsed="0.001007"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:32.780569" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:32.725309" elapsed="0.055260"/>
+</kw>
+<msg time="2025-11-16T04:33:32.780569" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.724306" elapsed="0.056263"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:32.781564" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:32.781564" level="INFO">${current} = 3120</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:32.723306" elapsed="0.058258"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:32.782556" level="FAIL">3120 != 3070</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:32.781564" elapsed="0.000992">3120 != 3070</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:32.723306" elapsed="0.059250">3120 != 3070</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.286738" elapsed="0.014560"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:33.329695" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.304501" elapsed="0.025194"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:33.329695" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.329695" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:33.329695" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:33.286738" elapsed="0.042957"/>
+</kw>
+<msg time="2025-11-16T04:33:33.329695" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.284720" elapsed="0.044975"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:33.329695" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:33.329695" level="INFO">${current} = 3070</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:33.283963" elapsed="0.045732"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.329695" elapsed="0.004174"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:33.282905" elapsed="0.050964"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:32.722304" elapsed="0.612329"/>
+</kw>
+<arg>${expected_after_transfer}</arg>
+<status status="PASS" start="2025-11-16T04:33:32.687463" elapsed="0.647170"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:33.836236" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.334633" elapsed="0.501603"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.009182" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-02-Transfer50valid.png"&gt;&lt;img src="screenshots/TC8-02-Transfer50valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-02-Transfer50valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:33.838255" elapsed="0.170927"/>
+</kw>
+<kw name="Capture Screenshot For Test" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:34.013221" level="INFO">${status} = PASS</msg>
+<var>${status}</var>
+<arg>${TEST STATUS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.013221" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:34.015236" level="INFO">${name} = TC8-02 Withdraw Amount Zero</msg>
+<var>${name}</var>
+<arg>${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.015236" elapsed="0.000969"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.017224" level="INFO">Executing JavaScript:
+window.scrollTo(0,0);
+Without any arguments.</msg>
+<arg>window.scrollTo(0,0);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.016205" elapsed="0.012630"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.205881" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/PASS_TC8-02%20Withdraw%20Amount%20Zero-scroll.png"&gt;&lt;img src="screenshots/PASS_TC8-02%20Withdraw%20Amount%20Zero-scroll.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.030597" elapsed="0.175284"/>
+</kw>
+<arg>'${status}' == 'PASS' and '${CAPTURE_ON_PASS}' == 'True'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.028835" elapsed="0.178043"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.206878" elapsed="0.000000"/>
+</kw>
+<doc>จับ Screenshot ทุกครั้งที่จบเทสต์</doc>
+<status status="PASS" start="2025-11-16T04:33:34.011201" elapsed="0.196679"/>
+</kw>
+<doc>Scenario 8 / TC8-02:
+Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw 0 (จำนวนเงินเป็นศูนย์) แล้ว Transfer 50 valid</doc>
+<status status="PASS" start="2025-11-16T04:33:27.779429" elapsed="6.439380"/>
+</test>
+<test id="s1-t3" name="TC8-03 Withdraw Negative Amount" line="93">
+<kw name="Login As Valid User">
+<kw name="Go To Login Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.231340" level="INFO">Opening url 'http://localhost:3000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.230344" elapsed="0.123197"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.353541" elapsed="0.016867"/>
+</kw>
+<status status="PASS" start="2025-11-16T04:33:34.229341" elapsed="0.141067"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.371416" level="INFO">Typing text '1234567890' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${VALID_ACCOUNT_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.370408" elapsed="0.358850"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.733261" level="INFO">Typing text '1234' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.730258" elapsed="0.219108"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:34.950364" level="INFO">Clicking button 'css:button[cid="lc"]'.</msg>
+<arg>css:button[cid="lc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:34.949366" elapsed="0.138562"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Account ID:</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.087928" elapsed="0.339767"/>
+</kw>
+<doc>ใช้ accountId/password ที่ valid ในระบบ</doc>
+<status status="PASS" start="2025-11-16T04:33:34.229341" elapsed="1.198874"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.433652" elapsed="0.068000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:35.567552" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.502340" elapsed="0.065212"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:35.568553" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.568553" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:35.568553" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:35.432992" elapsed="0.136558"/>
+</kw>
+<msg time="2025-11-16T04:33:35.569550" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.432430" elapsed="0.137120"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:35.569550" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:35.570547" level="INFO">${before} = 3070</msg>
+<var>${before}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:35.431918" elapsed="0.138629"/>
+</kw>
+<kw name="Deposit Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.572546" elapsed="0.012002"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.585547" elapsed="0.053783"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:35.640330" level="INFO">Typing text '100' into text field 'css:input[cid="d1"]'.</msg>
+<arg>css:input[cid="d1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.639330" elapsed="0.116084"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:35.756421" level="INFO">Clicking button 'css:button[cid="dc"]'.</msg>
+<arg>css:button[cid="dc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.756421" elapsed="0.134543"/>
+</kw>
+<arg>${DEPOSIT_AMOUNT}</arg>
+<doc>ฝากเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:35.572546" elapsed="0.318418"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:35.891967" level="INFO">${expected_after_deposit} = 3170</msg>
+<var>${expected_after_deposit}</var>
+<arg>${before} + ${DEPOSIT_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.891967" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.895965" elapsed="0.013000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:35.933494" level="INFO">${text} = 3070</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.908965" elapsed="0.024529"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:35.934500" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.934500" elapsed="0.000997"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:35.935497" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:35.894961" elapsed="0.040536"/>
+</kw>
+<msg time="2025-11-16T04:33:35.935497" level="INFO">${value} = 3070</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.894961" elapsed="0.040536"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:35.935497" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:35.936497" level="INFO">${current} = 3070</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:35.893965" elapsed="0.042532"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:35.936497" level="FAIL">3070 != 3170</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:35.936497" elapsed="0.000000">3070 != 3170</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:35.893965" elapsed="0.043529">3070 != 3170</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.438914" elapsed="0.015002"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:36.482917" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.454912" elapsed="0.028005"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:36.483912" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.482917" elapsed="0.000995"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:36.483912" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:36.438914" elapsed="0.045998"/>
+</kw>
+<msg time="2025-11-16T04:33:36.484912" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.438914" elapsed="0.045998"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:36.484912" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:36.485913" level="INFO">${current} = 3170</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:36.437906" elapsed="0.048007"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.485913" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:36.437906" elapsed="0.048007"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:35.893965" elapsed="0.592948"/>
+</kw>
+<arg>${expected_after_deposit}</arg>
+<status status="PASS" start="2025-11-16T04:33:35.892971" elapsed="0.593942"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:36.988372" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.486913" elapsed="0.501459"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:37.137639" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-03-Deposit100valid.png"&gt;&lt;img src="screenshots/TC8-03-Deposit100valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-03-Deposit100valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:36.989394" elapsed="0.149242"/>
+</kw>
+<kw name="Withdraw Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.140640" elapsed="0.013996"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.154636" elapsed="0.057001"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:37.212641" level="INFO">Typing text '-1' into text field 'css:input[cid="w1"]'.</msg>
+<arg>css:input[cid="w1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.211637" elapsed="0.118579"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:37.331206" level="INFO">Clicking button 'css:button[cid="wc"]'.</msg>
+<arg>css:button[cid="wc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.331206" elapsed="0.150261"/>
+</kw>
+<arg>${WITHDRAW_NEGATIVE}</arg>
+<doc>พยายามถอนเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:37.139639" elapsed="0.341828"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${POSITIVE_AMOUNT_ERROR_MSG}</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.482469" elapsed="0.015994"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:38.000934" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:37.500463" elapsed="0.500471"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.004460" elapsed="0.014025"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:38.049752" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.019487" elapsed="0.030265"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:38.050742" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.050742" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:38.051741" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:38.003458" elapsed="0.048283"/>
+</kw>
+<msg time="2025-11-16T04:33:38.051741" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.002464" elapsed="0.049277"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:38.051741" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:38.052742" level="INFO">${after_withdraw} = 3170</msg>
+<var>${after_withdraw}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:38.001448" elapsed="0.051294"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${after_withdraw}</arg>
+<arg>${expected_after_deposit}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.053745" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:38.556182" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.055752" elapsed="0.500430"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:38.691305" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-03-Withdraw%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%A5%E0%B8%9A.png"&gt;&lt;img src="screenshots/TC8-03-Withdraw%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%A5%E0%B8%9A.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-03-Withdrawติดลบ.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.556699" elapsed="0.134606"/>
+</kw>
+<kw name="Transfer Amount">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Transfer</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.695310" elapsed="0.018995"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.714305" elapsed="0.043359"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:38.757664" level="INFO">Typing text '1234567891' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${target_account_id}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.757664" elapsed="0.220428"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.978092" elapsed="0.020000"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:38.999092" elapsed="0.083856"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:39.083952" level="INFO">Typing text '50' into text field 'css:input[cid="t2"]'.</msg>
+<arg>css:input[cid="t2"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.083952" elapsed="0.111010"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:39.194962" level="INFO">Clicking button 'css:button[cid="tc"]'.</msg>
+<arg>css:button[cid="tc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.194962" elapsed="0.147877"/>
+</kw>
+<arg>${TARGET_ACCOUNT_ID}</arg>
+<arg>${TRANSFER_AMOUNT}</arg>
+<doc>โอน ${amount} ไปยังบัญชีเป้าหมาย 1234567891</doc>
+<status status="PASS" start="2025-11-16T04:33:38.694307" elapsed="0.648532"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:39.344857" level="INFO">${expected_after_transfer} = 3120</msg>
+<var>${expected_after_transfer}</var>
+<arg>${expected_after_deposit} - ${TRANSFER_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.344857" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.352934" elapsed="0.067390"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:39.497202" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.420324" elapsed="0.076878"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:39.498197" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.498197" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:39.498197" elapsed="0.001010"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:39.352934" elapsed="0.146273"/>
+</kw>
+<msg time="2025-11-16T04:33:39.499207" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.352934" elapsed="0.146273"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:39.499207" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:39.500206" level="INFO">${current} = 3170</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:39.348900" elapsed="0.151306"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:39.501209" level="FAIL">3170 != 3120</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:39.500206" elapsed="0.001003">3170 != 3120</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:39.348900" elapsed="0.152309">3170 != 3120</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.009250" elapsed="0.017190"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:40.059727" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.026999" elapsed="0.032728"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:40.059727" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.059727" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:40.059727" elapsed="0.002017"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:40.009250" elapsed="0.052494"/>
+</kw>
+<msg time="2025-11-16T04:33:40.061744" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.007235" elapsed="0.054509"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:40.062464" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:40.062464" level="INFO">${current} = 3120</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:40.007235" elapsed="0.055229"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.062464" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:40.003877" elapsed="0.058587"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:39.346882" elapsed="0.715582"/>
+</kw>
+<arg>${expected_after_transfer}</arg>
+<status status="PASS" start="2025-11-16T04:33:39.346882" elapsed="0.715582"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:40.565664" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.065144" elapsed="0.500520"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:40.722975" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-03-Transfer50valid.png"&gt;&lt;img src="screenshots/TC8-03-Transfer50valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-03-Transfer50valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.565664" elapsed="0.157311"/>
+</kw>
+<kw name="Capture Screenshot For Test" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:40.725971" level="INFO">${status} = PASS</msg>
+<var>${status}</var>
+<arg>${TEST STATUS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.724977" elapsed="0.000994"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:40.726976" level="INFO">${name} = TC8-03 Withdraw Negative Amount</msg>
+<var>${name}</var>
+<arg>${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.725971" elapsed="0.001005"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:40.727980" level="INFO">Executing JavaScript:
+window.scrollTo(0,0);
+Without any arguments.</msg>
+<arg>window.scrollTo(0,0);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.726976" elapsed="0.012563"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:40.893063" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/PASS_TC8-03%20Withdraw%20Negative%20Amount-scroll.png"&gt;&lt;img src="screenshots/PASS_TC8-03%20Withdraw%20Negative%20Amount-scroll.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.740530" elapsed="0.152533"/>
+</kw>
+<arg>'${status}' == 'PASS' and '${CAPTURE_ON_PASS}' == 'True'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.739539" elapsed="0.153524"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.894065" elapsed="0.000000"/>
+</kw>
+<doc>จับ Screenshot ทุกครั้งที่จบเทสต์</doc>
+<status status="PASS" start="2025-11-16T04:33:40.723976" elapsed="0.170089"/>
+</kw>
+<doc>Scenario 8 / TC8-03:
+Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw -1 (จำนวนเงินติดลบ) แล้ว Transfer 50 valid</doc>
+<status status="PASS" start="2025-11-16T04:33:34.226339" elapsed="6.669728"/>
+</test>
+<test id="s1-t4" name="TC8-04 Withdraw Decimal Amount" line="122">
+<kw name="Login As Valid User">
+<kw name="Go To Login Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:40.903063" level="INFO">Opening url 'http://localhost:3000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.902069" elapsed="0.089549"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:40.991618" elapsed="0.014999"/>
+</kw>
+<status status="PASS" start="2025-11-16T04:33:40.901062" elapsed="0.105555"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:41.006617" level="INFO">Typing text '1234567890' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${VALID_ACCOUNT_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.006617" elapsed="0.167075"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:41.174700" level="INFO">Typing text '1234' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.174700" elapsed="0.192080"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:41.367781" level="INFO">Clicking button 'css:button[cid="lc"]'.</msg>
+<arg>css:button[cid="lc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.366780" elapsed="0.115553"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Account ID:</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.483325" elapsed="0.336210"/>
+</kw>
+<doc>ใช้ accountId/password ที่ valid ในระบบ</doc>
+<status status="PASS" start="2025-11-16T04:33:40.901062" elapsed="0.918473"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.821540" elapsed="0.046534"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:41.913073" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.868074" elapsed="0.044999"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:41.914062" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.914062" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:41.914062" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:41.820532" elapsed="0.093530"/>
+</kw>
+<msg time="2025-11-16T04:33:41.915062" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.820532" elapsed="0.094530"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:41.915062" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:41.915062" level="INFO">${before} = 3120</msg>
+<var>${before}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:41.820532" elapsed="0.094530"/>
+</kw>
+<kw name="Deposit Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.919069" elapsed="0.009996"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.929065" elapsed="0.049144"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:41.980202" level="INFO">Typing text '100' into text field 'css:input[cid="d1"]'.</msg>
+<arg>css:input[cid="d1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:41.979211" elapsed="0.125368"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:42.104579" level="INFO">Clicking button 'css:button[cid="dc"]'.</msg>
+<arg>css:button[cid="dc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.104579" elapsed="0.123531"/>
+</kw>
+<arg>${DEPOSIT_AMOUNT}</arg>
+<doc>ฝากเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:41.918067" elapsed="0.310043"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:42.230111" level="INFO">${expected_after_deposit} = 3220</msg>
+<var>${expected_after_deposit}</var>
+<arg>${before} + ${DEPOSIT_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.229109" elapsed="0.001002"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.235117" elapsed="0.012158"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:42.276278" level="INFO">${text} = 3120</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.248277" elapsed="0.029002"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:42.278277" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.277279" elapsed="0.000998"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:42.278277" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:42.235117" elapsed="0.044166"/>
+</kw>
+<msg time="2025-11-16T04:33:42.279283" level="INFO">${value} = 3120</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.234122" elapsed="0.045161"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:42.279283" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:42.279283" level="INFO">${current} = 3120</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:42.233117" elapsed="0.047161"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:42.280278" level="FAIL">3120 != 3220</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:42.280278" elapsed="0.000995">3120 != 3220</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:42.232116" elapsed="0.049157">3120 != 3220</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.784477" elapsed="0.016996"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:42.833473" level="INFO">${text} = 3220</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.802475" elapsed="0.032000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:42.834475" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.834475" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:42.835472" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:42.784477" elapsed="0.050995"/>
+</kw>
+<msg time="2025-11-16T04:33:42.836476" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.783476" elapsed="0.053000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:42.836476" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:42.836476" level="INFO">${current} = 3220</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:42.782473" elapsed="0.054003"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.837470" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:42.781457" elapsed="0.056013"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.231106" elapsed="0.607364"/>
+</kw>
+<arg>${expected_after_deposit}</arg>
+<status status="PASS" start="2025-11-16T04:33:42.231106" elapsed="0.607364"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:43.340054" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:42.839470" elapsed="0.500584"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:43.533544" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-04-Deposit100valid.png"&gt;&lt;img src="screenshots/TC8-04-Deposit100valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-04-Deposit100valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.341600" elapsed="0.191944"/>
+</kw>
+<kw name="Withdraw Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.539545" elapsed="0.014554"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.555116" elapsed="0.055044"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:43.611090" level="INFO">Typing text '17.03' into text field 'css:input[cid="w1"]'.</msg>
+<arg>css:input[cid="w1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.610160" elapsed="0.129497"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:43.740657" level="INFO">Clicking button 'css:button[cid="wc"]'.</msg>
+<arg>css:button[cid="wc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.739657" elapsed="0.131017"/>
+</kw>
+<arg>${WITHDRAW_DECIMAL}</arg>
+<doc>พยายามถอนเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:43.537546" elapsed="0.333128"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:44.371872" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:43.871670" elapsed="0.500202"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.374887" elapsed="0.018001"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:44.452444" level="INFO">${text} = 3220</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.393884" elapsed="0.059559"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:44.454453" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.453443" elapsed="0.001010"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:44.454453" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:44.374887" elapsed="0.079566"/>
+</kw>
+<msg time="2025-11-16T04:33:44.455456" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.373899" elapsed="0.081557"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:44.455456" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:44.455456" level="INFO">${after_withdraw} = 3220</msg>
+<var>${after_withdraw}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:44.372892" elapsed="0.082564"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${after_withdraw}</arg>
+<arg>${expected_after_deposit}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.456453" elapsed="0.000995"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:44.959980" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.458446" elapsed="0.501534"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:45.161010" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC10004-%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%97%E0%B8%A8%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1.png"&gt;&lt;img src="screenshots/TC10004-%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%97%E0%B8%A8%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC10004-จำนวนทศนิยม.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:44.960999" elapsed="0.200011"/>
+</kw>
+<kw name="Transfer Amount">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Transfer</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.167017" elapsed="0.016001"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.184011" elapsed="0.053008"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:45.237019" level="INFO">Typing text '1234567891' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${target_account_id}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.237019" elapsed="0.143714"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.380733" elapsed="0.011006"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="t2"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.391739" elapsed="0.055016"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:45.447751" level="INFO">Typing text '50' into text field 'css:input[cid="t2"]'.</msg>
+<arg>css:input[cid="t2"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.446755" elapsed="0.119060"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:45.565815" level="INFO">Clicking button 'css:button[cid="tc"]'.</msg>
+<arg>css:button[cid="tc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.565815" elapsed="0.133534"/>
+</kw>
+<arg>${TARGET_ACCOUNT_ID}</arg>
+<arg>${TRANSFER_AMOUNT}</arg>
+<doc>โอน ${amount} ไปยังบัญชีเป้าหมาย 1234567891</doc>
+<status status="PASS" start="2025-11-16T04:33:45.166015" elapsed="0.533334"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:45.700347" level="INFO">${expected_after_transfer} = 3170</msg>
+<var>${expected_after_transfer}</var>
+<arg>${expected_after_deposit} - ${TRANSFER_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.700347" elapsed="0.000999"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.705350" elapsed="0.011006"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:45.739363" level="INFO">${text} = 3220</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.716356" elapsed="0.023007"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:45.740362" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.740362" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:45.740362" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:45.704345" elapsed="0.037017"/>
+</kw>
+<msg time="2025-11-16T04:33:45.741362" level="INFO">${value} = 3220</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.704345" elapsed="0.037017"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:45.741362" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:45.741362" level="INFO">${current} = 3220</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:45.703344" elapsed="0.038018"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:45.742357" level="FAIL">3220 != 3170</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:45.742357" elapsed="0.000000">3220 != 3170</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:45.702352" elapsed="0.040005">3220 != 3170</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.245548" elapsed="0.018537"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:46.291085" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.265078" elapsed="0.026007"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:46.292095" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.292095" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:46.293090" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:46.244549" elapsed="0.048541"/>
+</kw>
+<msg time="2025-11-16T04:33:46.293090" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.244549" elapsed="0.048541"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:46.294086" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:46.294086" level="INFO">${current} = 3170</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:46.243550" elapsed="0.050536"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.295086" elapsed="0.000000"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:46.242538" elapsed="0.052548"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:45.702352" elapsed="0.593734"/>
+</kw>
+<arg>${expected_after_transfer}</arg>
+<status status="PASS" start="2025-11-16T04:33:45.701346" elapsed="0.594740"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:46.797344" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.297093" elapsed="0.500251"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:46.950449" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-04-Transfer50valid.png"&gt;&lt;img src="screenshots/TC8-04-Transfer50valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-04-Transfer50valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.798874" elapsed="0.151575"/>
+</kw>
+<kw name="Capture Screenshot For Test" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:46.954444" level="INFO">${status} = PASS</msg>
+<var>${status}</var>
+<arg>${TEST STATUS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.953443" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:46.956449" level="INFO">${name} = TC8-04 Withdraw Decimal Amount</msg>
+<var>${name}</var>
+<arg>${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.955443" elapsed="0.001006"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:46.957952" level="INFO">Executing JavaScript:
+window.scrollTo(0,0);
+Without any arguments.</msg>
+<arg>window.scrollTo(0,0);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.956449" elapsed="0.015527"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:47.141056" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/PASS_TC8-04%20Withdraw%20Decimal%20Amount-scroll.png"&gt;&lt;img src="screenshots/PASS_TC8-04%20Withdraw%20Decimal%20Amount-scroll.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.972977" elapsed="0.169078"/>
+</kw>
+<arg>'${status}' == 'PASS' and '${CAPTURE_ON_PASS}' == 'True'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:46.971976" elapsed="0.170079"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.142055" elapsed="0.001016"/>
+</kw>
+<doc>จับ Screenshot ทุกครั้งที่จบเทสต์</doc>
+<status status="PASS" start="2025-11-16T04:33:46.952454" elapsed="0.190617"/>
+</kw>
+<doc>Scenario 8 / TC8-04:
+Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw 17.03 (จำนวนทศนิยม) แล้ว Transfer 50 valid</doc>
+<status status="PASS" start="2025-11-16T04:33:40.898063" elapsed="6.246009"/>
+</test>
+<test id="s1-t5" name="TC8-05 Withdraw With Alphabetic Characters" line="150">
+<kw name="Login As Valid User">
+<kw name="Go To Login Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:47.153083" level="INFO">Opening url 'http://localhost:3000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.152074" elapsed="0.097549"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=accountId</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.250621" elapsed="0.015540"/>
+</kw>
+<status status="PASS" start="2025-11-16T04:33:47.151076" elapsed="0.115085"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:47.266161" level="INFO">Typing text '1234567890' into text field 'id=accountId'.</msg>
+<arg>id=accountId</arg>
+<arg>${VALID_ACCOUNT_ID}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.266161" elapsed="0.146820"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:47.413985" level="INFO">Typing text '1234' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.412981" elapsed="0.123247"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:47.537239" level="INFO">Clicking button 'css:button[cid="lc"]'.</msg>
+<arg>css:button[cid="lc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.536228" elapsed="0.130236"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Account ID:</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:47.667465" elapsed="0.459888"/>
+</kw>
+<doc>ใช้ accountId/password ที่ valid ในระบบ</doc>
+<status status="PASS" start="2025-11-16T04:33:47.150073" elapsed="0.977280"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.129353" elapsed="0.012004"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:48.164894" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.141357" elapsed="0.023537"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:48.165893" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.165893" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:48.165893" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:48.129353" elapsed="0.036540"/>
+</kw>
+<msg time="2025-11-16T04:33:48.165893" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.128352" elapsed="0.037541"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:48.166893" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:48.166893" level="INFO">${before} = 3170</msg>
+<var>${before}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:48.128352" elapsed="0.038541"/>
+</kw>
+<kw name="Deposit Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.169888" elapsed="0.010997"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="d1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.180885" elapsed="0.054005"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:48.235894" level="INFO">Typing text '100' into text field 'css:input[cid="d1"]'.</msg>
+<arg>css:input[cid="d1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.234890" elapsed="0.111535"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:48.347421" level="INFO">Clicking button 'css:button[cid="dc"]'.</msg>
+<arg>css:button[cid="dc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.346425" elapsed="0.131075"/>
+</kw>
+<arg>${DEPOSIT_AMOUNT}</arg>
+<doc>ฝากเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:48.168890" elapsed="0.308610"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-16T04:33:48.478497" level="INFO">${expected_after_deposit} = 3270</msg>
+<var>${expected_after_deposit}</var>
+<arg>${before} + ${DEPOSIT_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.478497" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.483496" elapsed="0.011997"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:48.519496" level="INFO">${text} = 3170</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.495493" elapsed="0.024003"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:48.520497" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.520497" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:48.520497" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:48.482493" elapsed="0.039009"/>
+</kw>
+<msg time="2025-11-16T04:33:48.521502" level="INFO">${value} = 3170</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.482493" elapsed="0.039009"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:48.522498" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:48.522498" level="INFO">${current} = 3170</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:48.481497" elapsed="0.041001"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:48.523500" level="FAIL">3170 != 3270</msg>
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:48.523500" elapsed="0.000000">3170 != 3270</status>
+</kw>
+<arg>${expected}</arg>
+<status status="FAIL" start="2025-11-16T04:33:48.480494" elapsed="0.044000">3170 != 3270</status>
+</kw>
+<kw name="Balance Should Be">
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.029742" elapsed="0.019010"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:49.090275" level="INFO">${text} = 3270</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.049751" elapsed="0.041532"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:49.091283" level="INFO">${value} = 3270</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.091283" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:49.091283" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:49.028741" elapsed="0.063537"/>
+</kw>
+<msg time="2025-11-16T04:33:49.092278" level="INFO">${value} = 3270</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.027744" elapsed="0.064534"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:49.092278" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:49.092278" level="INFO">${current} = 3270</msg>
+<var>${current}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:49.026742" elapsed="0.065536"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${current}</arg>
+<arg>${expected}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.092278" elapsed="0.001008"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2025-11-16T04:33:49.024725" elapsed="0.068561"/>
+</kw>
+<arg>5x</arg>
+<arg>0.5s</arg>
+<arg>Balance Should Be</arg>
+<arg>${expected}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:48.480494" elapsed="0.612792"/>
+</kw>
+<arg>${expected_after_deposit}</arg>
+<status status="PASS" start="2025-11-16T04:33:48.479502" elapsed="0.613784"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:49.594410" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.094278" elapsed="0.500132"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:49.739233" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/TC8-05-Deposit100valid.png"&gt;&lt;img src="screenshots/TC8-05-Deposit100valid.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/TC8-05-Deposit100valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.595471" elapsed="0.143762"/>
+</kw>
+<kw name="Withdraw Amount">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.741243" elapsed="0.014010"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>css:input[cid="w1"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.756248" elapsed="0.052166"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:49.809414" level="INFO">Typing text '3WOJA7' into text field 'css:input[cid="w1"]'.</msg>
+<arg>css:input[cid="w1"]</arg>
+<arg>${amount}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.808414" elapsed="0.137113"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:49.945527" level="INFO">Clicking button 'css:button[cid="wc"]'.</msg>
+<arg>css:button[cid="wc"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:49.945527" elapsed="0.156949"/>
+</kw>
+<arg>${WITHDRAW_ALPHANUM}</arg>
+<doc>พยายามถอนเงินด้วยจำนวน ${amount}</doc>
+<status status="PASS" start="2025-11-16T04:33:49.741243" elapsed="0.361233"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-16T04:33:50.603905" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.103472" elapsed="0.500433"/>
+</kw>
+<kw name="Get Displayed Balance">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Get Balance Once">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.606919" elapsed="0.016005"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:50.666892" level="INFO">${text} = 3233</msg>
+<var>${text}</var>
+<arg>xpath=//h2[normalize-space(.)="Balance:"]/following-sibling::h1[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.622924" elapsed="0.043968"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-11-16T04:33:50.667884" level="INFO">${value} = 3233</msg>
+<var>${value}</var>
+<arg>${text}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.667884" elapsed="0.000998"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:50.668882" elapsed="0.000000"/>
+</return>
+<doc>อ่านค่า Balance จากหน้า UI</doc>
+<status status="PASS" start="2025-11-16T04:33:50.605932" elapsed="0.062950"/>
+</kw>
+<msg time="2025-11-16T04:33:50.668882" level="INFO">${value} = 3233</msg>
+<var>${value}</var>
+<arg>3x</arg>
+<arg>0.5s</arg>
+<arg>Get Balance Once</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.605932" elapsed="0.062950"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-11-16T04:33:50.669882" elapsed="0.000000"/>
+</return>
+<msg time="2025-11-16T04:33:50.669882" level="INFO">${after_withdraw} = 3233</msg>
+<var>${after_withdraw}</var>
+<doc>อ่าน Balance โดย retry กรณี DOM ถูก re-render กัน StaleElementReferenceException</doc>
+<status status="PASS" start="2025-11-16T04:33:50.604925" elapsed="0.064957"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T04:33:50.671884" level="FAIL">3233 != 3270</msg>
+<arg>${after_withdraw}</arg>
+<arg>${expected_after_deposit}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-16T04:33:50.670881" elapsed="0.001003">3233 != 3270</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.672885" elapsed="0.000000"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>screenshots/TC8-05-Withdrawมีตัวอักษร.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.673882" elapsed="0.000000"/>
+</kw>
+<kw name="Transfer Amount">
+<arg>${TARGET_ACCOUNT_ID}</arg>
+<arg>${TRANSFER_AMOUNT}</arg>
+<doc>โอน ${amount} ไปยังบัญชีเป้าหมาย 1234567891</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.677885" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_after_transfer}</var>
+<arg>${expected_after_deposit} - ${TRANSFER_AMOUNT}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.678883" elapsed="0.000000"/>
+</kw>
+<kw name="Wait For Balance To Equal">
+<arg>${expected_after_transfer}</arg>
+<status status="NOT RUN" start="2025-11-16T04:33:50.679884" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.679884" elapsed="0.000000"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>screenshots/TC8-05-Transfer50valid.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2025-11-16T04:33:50.680884" elapsed="0.001000"/>
+</kw>
+<kw name="Capture Screenshot For Test" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:50.683903" level="INFO">${status} = FAIL</msg>
+<var>${status}</var>
+<arg>${TEST STATUS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.682884" elapsed="0.001019"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T04:33:50.684899" level="INFO">${name} = TC8-05 Withdraw With Alphabetic Characters</msg>
+<var>${name}</var>
+<arg>${TEST NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.684899" elapsed="0.000000"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:50.686884" level="INFO">Executing JavaScript:
+window.scrollTo(0,0);
+Without any arguments.</msg>
+<arg>window.scrollTo(0,0);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.685884" elapsed="0.011006"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' == 'PASS' and '${CAPTURE_ON_PASS}' == 'True'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}PASS_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.696890" elapsed="0.001001"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-16T04:33:50.821408" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/FAIL_TC8-05%20Withdraw%20With%20Alphabetic%20Characters-scroll.png"&gt;&lt;img src="screenshots/FAIL_TC8-05%20Withdraw%20With%20Alphabetic%20Characters-scroll.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.698887" elapsed="0.123523"/>
+</kw>
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${SCREENSHOT_DIR}${/}FAIL_${name}-scroll.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.697891" elapsed="0.124519"/>
+</kw>
+<doc>จับ Screenshot ทุกครั้งที่จบเทสต์</doc>
+<status status="PASS" start="2025-11-16T04:33:50.682884" elapsed="0.139526"/>
+</kw>
+<doc>Scenario 8 / TC8-05:
+Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw 3WOJA7 (มีตัวอักษร) แล้ว Transfer 50 valid</doc>
+<status status="FAIL" start="2025-11-16T04:33:47.147075" elapsed="3.675335">3233 != 3270</status>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T04:33:50.825409" elapsed="2.403909"/>
+</kw>
+<doc>CU Bank UI tests for Login, Deposit, Withdraw (insufficient funds) and Transfer.
+รวมทั้ง Scenario 8 : Login ผ่าน ฝากเงินผ่าน ถอนเงินไม่ผ่าน (เงินไม่พอ) โอนเงินผ่าน</doc>
+<status status="FAIL" start="2025-11-16T04:33:18.996283" elapsed="34.233035"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="1" skip="0" id="s1" name="CU Bank UI Tests">CU Bank UI Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
