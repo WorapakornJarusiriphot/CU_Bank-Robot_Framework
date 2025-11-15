@@ -44,7 +44,7 @@ User registers with a password longer than 4 digits should return a password err
     Page Should Contain    Your password must be exactly 4 digits long.
 
 User registers with a full name longer than 30 characters (including space) should return a fullname error
-    [Documentation]    EQ1, EQ2, EQ11
+    [Documentation]    EQ1, EQ2, EQ12
     Register User    1234567890    1234    chaveehandsomeandcool    coolandhandsome
     Page Should Contain    Your fullname must be 30 characters or less, including spaces.
 
