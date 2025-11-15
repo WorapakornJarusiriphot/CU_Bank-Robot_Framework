@@ -25,27 +25,27 @@ User login with an account number longer than 10 digits should return an account
     Page Should Contain    Your account ID must be exactly 10 digits long.
 
 User login with non-existing account number should return not found error
-    [Documentation]    EQ6, EQ2
+    [Documentation]    EQ7, EQ2
     Login User    0123456781    1234
     Page Should Contain    User not found. Please check your account ID.
 
 User login with a non-digit password should return a password error
-    [Documentation]    EQ3, EQ7
+    [Documentation]    EQ6, EQ9
     Login User    1234567890    eiei
     Page Should Contain    Your password should contain numbers only.
 
 User login with a password shorter than 4 digits should return a password error
-    [Documentation]    EQ3, EQ81
+    [Documentation]    EQ6, EQ81
     Login User    1234567890    1
     Page Should Contain    Your password must be exactly 4 digits long.
 
 User login with a password longer than 4 digits should return a password error
-    [Documentation]    EQ3, EQ82
+    [Documentation]    EQ6, EQ82
     Login User    1234567890    12345678
     Page Should Contain    Your password must be exactly 4 digits long.
 
 User login with non-matching password should return incorrect password error
-    [Documentation]    EQ3, EQ9
+    [Documentation]    EQ6, EQ10
     Login User    1234567890    4321
     Page Should Contain    Incorrect password. Please try again.
 

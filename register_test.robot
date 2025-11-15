@@ -29,7 +29,7 @@ User registers with an existing account number should return an already in use e
     Page Should Contain    This account ID is already in use. Please choose another.
 
 User registers with a non-digit password should return a password error
-    [Documentation]    EQ1, EQ7, EQ31
+    [Documentation]    EQ1, EQ9, EQ31
     Register User    1234567890    eiei    Test    User
     Page Should Contain    Your password should contain numbers only.
 
@@ -43,9 +43,9 @@ User registers with a password longer than 4 digits should return a password err
     Register User    1234567890    12345678    Test    User
     Page Should Contain    Your password must be exactly 4 digits long.
 
-User registers with a full name longer than 30 characters should return a fullname error
-    [Documentation]    EQ1, EQ2, EQ9
-    Register User    1234567890    1234    chaveehandsomeandcool    cool and handsome
+User registers with a full name longer than 30 characters (including space) should return a fullname error
+    [Documentation]    EQ1, EQ2, EQ11
+    Register User    1234567890    1234    chaveehandsomeandcool    coolandhandsome
     Page Should Contain    Your fullname must be 30 characters or less, including spaces.
 
 *** Keywords ***
