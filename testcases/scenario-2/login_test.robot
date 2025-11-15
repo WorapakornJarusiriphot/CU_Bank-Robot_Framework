@@ -53,16 +53,13 @@ Open Login Browser
 
 Login User
     [Arguments]    ${account}    ${password}
-
     Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
-
+    Delete All Cookies
+    Go To    ${URL}
     Input Text    xpath=//input[@placeholder="Please fill your account number (10 digits)"]    ${account}
     Input Text    xpath=//input[@placeholder="Please fill your password (4 digits)"]           ${password}
-
     Click Button    xpath=//button[text()="Login"]
-
     Sleep    1s
     Capture Page Screenshot
 
-    Close Window
