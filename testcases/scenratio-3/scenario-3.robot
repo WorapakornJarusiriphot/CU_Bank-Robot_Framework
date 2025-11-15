@@ -39,21 +39,21 @@ Deposit And Check
 
     Capture Page Screenshot    ${SCREENSHOT_DIR}/${test_case_name}.png
 
-    # --- FIX #1: native browser validation (TC1 / TC2 / TC5) ---
+    
     IF    ${is_native_validation}
         ${validation_msg}=    Execute Javascript    return document.querySelector('[cid="d1"]').validationMessage;
         Log To Console    [${test_case_name}] Browser validation message: ${validation_msg}
             RETURN
     END
 
-    # --- Otherwise continue to backend validation ---
+    
     Click Element    xpath=//button[@cid='dc']
     Sleep    0.5s
 
     ${error_found}=    Run Keyword And Return Status
     ...    Wait Until Element Is Visible    css:label[cid="deposite-error-mes"]    timeout=2s
 
-    # --- Valid deposit case ---
+   
     IF    ${is_valid_test}
         IF    ${error_found}
             ${error_text}=    Get Text    css:label[cid="deposite-error-mes"]
@@ -64,7 +64,7 @@ Deposit And Check
         RETURN
     END
 
-    # --- Expected error case ---
+ 
     IF    not ${error_found}
         Fail    [${test_case_name}] Expected error "${expected_error}" but no error shown
     END
