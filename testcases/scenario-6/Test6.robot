@@ -12,7 +12,7 @@ ${AMOUNT10000}     10000
 ${AMOUNTNegative}     -10000
 ${AMOUNT1000}     1000
 ${AMOUNTFloat}     1.50
-${AMOUNTWrong}     abc
+${AMOUNTWrong}     e
 
 *** Test Cases ***
 Amount is empty 6-1
@@ -60,7 +60,7 @@ Pay with Negative amount 6-4
     Sleep           1s
     Page Should Contain    The amount must be greater than 0. Please enter a positive number.
 
-Pay with Negative amount 6-5
+Don't have enough cash to pay 6-5
     [Documentation]    EQ1, EQ2, EQ34, EQ38
     Login User
     Sleep           1s
