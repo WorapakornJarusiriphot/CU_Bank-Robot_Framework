@@ -34,7 +34,7 @@ ${INSUFFICIENT_BALANCE_MSG}        Your balance is not enough to complete the wi
 
 TC8-01 Withdraw More Than Balance
     [Documentation]    Scenario 8 / TC8-01:
-    ...                Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw 200 (มากกว่า Balance: เงินไม่พอ) แล้ว Transfer 50 valid
+    ...                Login ผ่าน แล้ว Deposit 100 valid แล้ว Withdraw มากกว่า Balance แล้ว Transfer 50 valid
     Login As Valid User
 
     # Deposit: valid
