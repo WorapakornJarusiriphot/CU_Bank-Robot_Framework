@@ -16,6 +16,9 @@ Successful Payment 7-1
     [Documentation]    EQ1, EQ2, EQ34, EQ36
     Login User
     Sleep           1s
+    Input Text      css=[cid='d1']        ${AMOUNT1}
+    Click Element   css=[cid='dc']
+    Sleep           1s
     ${current}=        Get Current Balance
     ${expected}=    Evaluate    ${current} - ${AMOUNT1}
     Click Element   billTarget
