@@ -1,5 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
+Suite Setup       Open Login Browser
+Suite Teardown    Close Browser
 
 *** Variables ***
 ${URL}            http://localhost:3000/
@@ -8,7 +10,7 @@ ${BROWSER}        Chrome
 *** Test Cases ***
 User login with an account number shorter than 10 digits
     [Documentation]    EQ4A, EQ2
-    Login User    ${EMPTY}    1234
+    Login User    1234    1234
     Page Should Contain    Your account ID must be exactly 10 digits long.
 
 User login with an account number longer than 10 digits
@@ -28,7 +30,7 @@ User login with non-existing account number
 
 User login with a password shorter than 4 digits
     [Documentation]    EQ6, EQ8A
-    Login User    1234567890    ${EMPTY}
+    Login User    1234567890    1
     Page Should Contain    Your password must be exactly 4 digits long.
 
 User login with a password longer than 4 digits
@@ -53,9 +55,6 @@ Open Login Browser
 
 Login User
     [Arguments]    ${account}    ${password}
-    Open Browser    ${URL}    ${BROWSER}
-    Maximize Browser Window
-    Delete All Cookies
     Go To    ${URL}
     Input Text    xpath=//input[@placeholder="Please fill your account number (10 digits)"]    ${account}
     Input Text    xpath=//input[@placeholder="Please fill your password (4 digits)"]           ${password}
