@@ -21,7 +21,7 @@ ${WITHDRAW_GT_BALANCE}     9999999999
 ${WITHDRAW_ZERO}           0
 ${WITHDRAW_NEGATIVE}       -1
 ${WITHDRAW_DECIMAL}        17.03
-${WITHDRAW_ALPHANUM}       3WOJA7
+${WITHDRAW_ALPHANUM}       3e7
 ${SCREENSHOT_DIR}          ${OUTPUT DIR}${/}screenshots
 ${CAPTURE_ON_PASS}         True
 ${POSITIVE_AMOUNT_ERROR_MSG}    The amount must be greater than 0. Please enter a positive number.
